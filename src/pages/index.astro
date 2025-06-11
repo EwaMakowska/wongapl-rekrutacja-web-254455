@@ -1,11 +1,55 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content'
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+//const all = await getCollection('main-page');
+const welcome = await getEntry('main-page', 'welcome');
+
+let Content;
+if (welcome) {
+	({ Content } = await welcome.render());
+}
 ---
 
 <Layout>
-	<Welcome />
+	<!-- <pre>{JSON.stringify(all, null, 2)}</pre> -->
+
+	{welcome && Content && (
+		<>
+			<h1 class="display-4">{welcome.data.title}</h1>
+			<p class="lead">{welcome.data.subtitle}</p>
+			<hr class="my-4" />
+			<div class="content-wrapper">
+				{welcome.data.image && (
+					<img 
+						src={welcome.data.image} 
+						alt={welcome.data.image_alt || ''} 
+						class="content-image"
+					/>
+				)}
+				<div class="content-text text-justify">
+					<Content />
+				</div>
+			</div>
+		</>
+	)}
 </Layout>
+
+<style>
+	.content-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		align-items: flex-start;
+	}
+	.content-image {
+		flex: 1 1 200px;
+		max-width: 250px;
+		height: auto;
+		object-fit: cover;
+		border-radius: 8px;
+	}
+	.content-text {
+		flex: 2 1 300px;
+	}
+</style>
