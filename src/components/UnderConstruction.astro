@@ -1,0 +1,9 @@
+---
+import { getEntry } from 'astro:content';
+
+const text = await getEntry('underConstruction', 'underConstruction');
+---
+
+<div class="text-center mt-5 p-4">
+    {text && <div set:html={text.data.content} />}
+</div>

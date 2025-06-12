@@ -15,10 +15,10 @@ The goal of TypeScript is to catch errors before they reach production. By defin
 
 Whether you're building a small personal site or a mission-critical application, TypeScript scales with your project and team size — making it a favorite choice across industries.
 
-### Official resources
-
+ <!-- ### Official resources -->
+<!--
 - 📚 [TypeScript Handbook](https://www.typescriptlang.org/docs/) — The best place to learn and explore core concepts.
 - 🧪 [Playground](https://www.typescriptlang.org/play) — Try TypeScript directly in your browser.
 - 👥 [Community Discord](https://discord.com/invite/typescript) — Connect with developers around the world.
 - 🐙 [GitHub Repository](https://github.com/microsoft/TypeScript) — Contribute or follow development progress.
-- 📢 [TypeScript Blog](https://devblogs.microsoft.com/typescript/) — Updates, release notes, and insights.
+- 📢 [TypeScript Blog](https://devblogs.microsoft.com/typescript/) — Updates, release notes, and insights. -->
