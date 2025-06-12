@@ -29,22 +29,76 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
+        label: "InternalLinks",
+        name: "internal_links",
+        path: "src/content/internal-links",
+        format: "json",
         fields: [
           {
             type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
+            name: "label",
+            label: "Link label",
           },
           {
+            type: "string",
+            name: "url",
+            label: "Link URL",
+          },
+          {
+            type: "boolean",
+            name: "external",
+            label: "Open in new tab?",
+          },
+        ],
+      },
+      {
+        label: "External Links",
+        name: "external_links",
+        path: "src/content/external-links",
+        format: "json",
+        fields: [
+          {
+            type: "string",
+            name: "label",
+            label: "Link label",
+          },
+          {
+            type: "string",
+            name: "url",
+            label: "Link URL",
+          },
+          {
+            type: "boolean",
+            name: "external",
+            label: "Open in new tab?",
+          },
+        ],
+      },
+      {
+        label: "Globals",
+        name: "globals",
+        path: "src/content/globals",
+        format: "json",
+        fields: [
+          {
             type: "rich-text",
-            name: "body",
-            label: "Body",
+            name: "footerContent",
+            label: "Footer Text Content",
             isBody: true,
+            toolbarOverride: ["bold", "italic", "link"],
+          },
+        ],
+      },
+      {
+        label: "Under Construction",
+        name: "underConstruction",
+        path: "src/content/underConstruction",
+        format: "json",
+        fields: [
+          {
+            type: "string",
+            name: "content",
+            label: "under construction content",
           },
         ],
       },

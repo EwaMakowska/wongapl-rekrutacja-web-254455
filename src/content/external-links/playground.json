@@ -1,0 +1,7 @@
+{
+    "label": "Playground",
+    "url": "https://www.typescriptlang.org/play",
+    "icon": "🧪",
+    "description": "Try TypeScript directly in your browser.",
+    "external": true
+  }

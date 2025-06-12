@@ -1,0 +1,7 @@
+{
+    "label": "TypeScript Blog",
+    "url": "https://devblogs.microsoft.com/typescript/",
+    "icon": "📢",
+    "description": "Updates, release notes, and insights.",
+    "external": true
+  }

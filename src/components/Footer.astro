@@ -1,0 +1,39 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+
+const internalLinks = await getCollection('internal-links');
+const externalLinks = await getCollection('external-links');
+const allLinks = [...internalLinks, ...externalLinks];
+const footer = await getEntry('globals', 'footer');
+---
+
+<footer class="text-center mt-5 p-4 bg-light border-top small text-muted">
+    <div class="row">
+
+        <div class="col-md-6">
+            <ul class="list-unstyled">
+                {internalLinks.map(({ data }) => (
+                    <li>
+                        <a href={data.url} target={data.external ? "_blank" : "_self"} rel={data.external ? "noopener noreferrer" : undefined}>
+                            {data.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <ul class="list-unstyled">
+                {externalLinks.map(({ data }) => (
+                    <li>
+                        <a href={data.url} target={data.external ? "_blank" : "_self"} rel={data.external ? "noopener noreferrer" : undefined}>
+                            {data.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </div>
+
+    {footer && <div set:html={footer.data.footerContent} />}
+</footer>
