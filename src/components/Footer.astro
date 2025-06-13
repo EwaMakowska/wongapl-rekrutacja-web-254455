@@ -23,27 +23,31 @@ const footer = await getEntry('globals', 'footer');
     <div class="row">
 
         <div class="col-md-6">
-            <ul class="list-unstyled">
-                {internalLinks.map(({ data }) => (
-                    <li>
-                        <a href={data.url} target={data.external ? "_blank" : "_self"} rel={data.external ? "noopener noreferrer" : undefined}>
-                            {data.label}
-                        </a>
-                    </li>
-                ))}
-            </ul>
+            <nav aria-label="Internal site navigation">
+                <ul class="list-unstyled">
+                    {internalLinks.map(({ data }) => (
+                        <li>
+                            <a href={data.url} target={data.external ? "_blank" : "_self"} rel={data.external ? "noopener noreferrer" : undefined}>
+                                {data.label}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
         </div>
 
         <div class="col-md-6">
-            <ul class="list-unstyled">
-                {externalLinks.map(({ data }) => (
-                    <li>
-                        <a href={data.url} target={data.external ? "_blank" : "_self"} rel={data.external ? "noopener noreferrer" : undefined}>
-                            {data.label}
-                        </a>
-                    </li>
-                ))}
-            </ul>
+            <nav aria-label="External official resources">
+                <ul class="list-unstyled">
+                    {externalLinks.map(({ data }) => (
+                        <li>
+                            <a href={data.url} target={data.external ? "_blank" : "_self"} rel={data.external ? "noopener noreferrer" : undefined}>
+                                {data.label}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
         </div>
     </div>
 
