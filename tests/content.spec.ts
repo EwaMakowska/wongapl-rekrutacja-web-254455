@@ -12,13 +12,15 @@ test.describe('Content Verification', () => {
     await expect(firstArticleHeading).toHaveText('Any');
   });
 
-  test('should display "under construction" message on the advantages page', async ({ page }) => {
+  test('should display "under construction" image on the advantages page', async ({ page }) => {
     // Navigate to the advantages page
     await page.goto('/advantages');
 
-    // Find the main container <main> and then search for the paragraph <p> within it
+    // Find the main container <main> and then search for the image within it
     const mainContainer = page.locator('main');
-    const underConstructionText = mainContainer.locator('p');
-    await expect(underConstructionText).toHaveText('Page under construction. Come back soon!');
+    const underConstructionImage = mainContainer.locator('img[alt="Strona w budowie"]');
+
+    // Check if the image is visible
+    await expect(underConstructionImage).toBeVisible();
   });
 }); 
