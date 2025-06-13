@@ -26,3 +26,9 @@ pnpm-debug.log*
 node_modules
 
 Zadanie_w_rekrutacji_Programista_Programistka_Front-end.pdf
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
