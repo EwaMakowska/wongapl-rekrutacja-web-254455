@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+
+const priorityInternalLinks = ["home", "types", "advantages"]
+const internalLinks = (await getCollection('internal-links')).sort((a, b) => {
+  const aIndex = priorityInternalLinks.indexOf(a.id);
+  const bIndex = priorityInternalLinks.indexOf(b.id);
+  if (aIndex === -1 && bIndex === -1) return 0;
+  if (aIndex === -1) return 1;
+  if (bIndex === -1) return -1;
+  return aIndex - bIndex;
+});
+---
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end align-items-center">
+    <ul class="navbar-nav">
+        {internalLinks.map(({ data }) => (
+            <li class="nav-item">
+                <a class="nav-link" href={data.url}>{data.label}</a>
+            </li>
+        ))}
+    </ul>
+</nav>

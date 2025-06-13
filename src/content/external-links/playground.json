@@ -1,7 +1,7 @@
 {
     "label": "Playground",
     "url": "https://www.typescriptlang.org/play",
-    "icon": "🧪",
+    "icon": "🐙",
     "description": "Try TypeScript directly in your browser.",
     "external": true
   }

@@ -3,7 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import {getCollection, getEntry} from 'astro:content'
 
 //const all = await getCollection('main-page');
-const externalLinks = await getCollection('external-links');
+const externalLinks = (await getCollection('external-links')).sort((a, b) => {
+  // typeScriptHandbook na początek
+  if (a.id === 'typeScriptHandbook') return -1;
+  if (b.id === 'typeScriptHandbook') return 1;
+  return 0;
+});
 const welcome = await getEntry('main-page', 'welcome');
 
 let Content;
@@ -32,15 +37,14 @@ if (welcome) {
                         <Content/>
                         <section>
                             <h3>Official resources</h3>
-                            <ul>
+                            <ul class="list-unstyled">
                                 {externalLinks.map(({data}) => (
                                         <li>
 											<span>{data.icon}</span>
                                             <a href={data.url} target="_blank" rel="noopener noreferrer">
                                                 {data.label}
                                             </a>
-                                            {data.description &&
-                                                    <> — {data.description}</>}
+                                            {data.description && <> — {data.description}</>}
                                         </li>
                                 ))}
                             </ul>
