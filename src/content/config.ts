@@ -2,6 +2,7 @@
 import { defineCollection, z } from "astro:content"
 
 const mainPage = defineCollection({
+    type: 'content',
     schema: z.object({
         title: z.string(),
         subtitle: z.string(),
@@ -44,10 +45,19 @@ const globals = defineCollection({
     }),
   });
 
+const typesCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+  }),
+});
+
 export const collections = {
     "main-page": mainPage,
     "internal-links": internalLinks,
     "external-links": externalLinks,
     "globals": globals,
     "underConstruction": underConstruction,
+    "types": typesCollection,
 }
