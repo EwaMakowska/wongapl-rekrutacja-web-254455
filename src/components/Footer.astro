@@ -1,9 +1,21 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 
-const internalLinks = await getCollection('internal-links');
-const externalLinks = await getCollection('external-links');
-const allLinks = [...internalLinks, ...externalLinks];
+const priorityInternalLinks = ["home", "types", "advantages"]
+const internalLinks = (await getCollection('internal-links')).sort((a, b) => {
+  const aIndex = priorityInternalLinks.indexOf(a.id);
+  const bIndex = priorityInternalLinks.indexOf(b.id);
+  if (aIndex === -1 && bIndex === -1) return 0;
+  if (aIndex === -1) return 1;
+  if (bIndex === -1) return -1;
+  return aIndex - bIndex;
+});
+
+const externalLinks = (await getCollection('external-links')).sort((a, b) => {
+  if (a.id === 'typeScriptHandbook') return -1;
+  if (b.id === 'typeScriptHandbook') return 1;
+  return 0;
+});
 const footer = await getEntry('globals', 'footer');
 ---
 
