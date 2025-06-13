@@ -102,6 +102,26 @@ export default defineConfig({
           },
         ],
       },
+      {
+        label: "Types",
+        name: "types",
+        path: "src/content/types",
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "name",
+            label: "Type Name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Description",
+          },
+        ]
+      }
     ],
   },
 });
