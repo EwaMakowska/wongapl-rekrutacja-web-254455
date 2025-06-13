@@ -2,17 +2,17 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Homepage', () => {
   test('should display the main heading and a link to the types page', async ({ page }) => {
-    // 1. Otwórz stronę główną
+    // 1. Navigate to the homepage
     await page.goto('/');
 
-    // 2. Znajdź główny kontener strony i w nim szukaj nagłówka h1
+    // 2. Find the main container and then find the h1 heading within it
     const mainContainer = page.locator('main');
     const mainHeading = mainContainer.locator('h1');
     await expect(mainHeading).toHaveText('Welcome in the typeScript world 💊 !');
 
-    // 3. Znajdź menu główne i w nim szukaj linku do strony z typami
-    const mainMenu = page.locator('nav');
-    const typesLink = mainMenu.locator('a[href="/types/1"]');
+    // 3. Find the main menu (inside <header>) and then find the link to the types page
+    const header = page.locator('header');
+    const typesLink = header.locator('a[href="/types/1"]');
     await expect(typesLink).toBeVisible();
   });
 }); 
