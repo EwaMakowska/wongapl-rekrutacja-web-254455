@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import {getCollection, getEntry} from 'astro:content'
+import { Image } from 'astro:assets';
 
 //const all = await getCollection('main-page');
 const externalLinks = (await getCollection('external-links')).sort((a, b) => {
@@ -27,10 +28,13 @@ if (welcome) {
                 <hr class="my-4"/>
                 <div class="content-wrapper">
                     {welcome.data.image && (
-                            <img
+                            <Image
                                     src={welcome.data.image}
                                     alt={welcome.data.image_alt || ''}
                                     class="content-image"
+                                    width={250}
+                                    height={141} 
+                                    format={'webp'}
                             />
                     )}
                     <div class="content-text text-justify">
