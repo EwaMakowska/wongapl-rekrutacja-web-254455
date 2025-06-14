@@ -6,6 +6,7 @@ jobs:
   test:
     permissions:
       pull-requests: write
+      deployments: write
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -19,13 +20,20 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
-    - name: Upload Report
+    - name: Upload Report on Failure
       uses: actions/upload-artifact@v4
       if: failure()
       with:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+    - name: Upload Snapshots on Failure
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: playwright-snapshots-linux
+        path: tests/**/*.ts-snapshots/
+        retention-days: 7
     - name: Publish to Cloudflare Pages
       if: ${{ !cancelled() }}
       uses: cloudflare/pages-action@v1
