@@ -1,4 +1,6 @@
 name: Playwright Tests
+# This workflow runs E2E tests using Playwright on every pull request.
+
 on:
   pull_request:
     branches: [ main ]
