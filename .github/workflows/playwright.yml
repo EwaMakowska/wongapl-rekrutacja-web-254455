@@ -39,7 +39,7 @@ jobs:
         path: tests/**/*.ts-snapshots/
         retention-days: 7
     - name: Publish to Cloudflare Pages
-      if: ${{ !cancelled() }}
+      if: always()
       uses: cloudflare/pages-action@v1
       id: publish_report
       with:
