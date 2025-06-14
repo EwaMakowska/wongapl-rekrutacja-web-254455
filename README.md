@@ -42,6 +42,34 @@ This section tracks the development plan for the recruitment task. Tasks are mar
 - [x] Add rich text footer content editable via CMS
 - [x] Build paginated section for TypeScript knowledge entries
 - [x] Set up Playwright for E2E testing
-- [ ] Configure CI/CD with GitHub Actions and Cloudflare Pages
+- [x] Configure CI/CD with GitHub Actions and Cloudflare Pages
 - [ ] Optimize for Web Vitals & Lighthouse
 - [ ] Deploy test report to separate Cloudflare Pages project
+
+### Development
+
+To start the development server, run:
+
+```bash
+npm run dev
+```
+
+### Testing
+
+This project uses Playwright for End-to-End testing.
+
+To run all tests:
+
+```bash
+npm run test
+```
+
+#### Snapshot Testing
+
+This repository uses visual snapshot tests to prevent unintended UI changes. If you make an intentional change to the UI (e.g., redesign a page), the snapshot test will fail. To update the "golden" snapshot files, run the following command after verifying that your changes are correct:
+
+```bash
+npx playwright test --update-snapshots
+```
+
+Remember to commit the updated snapshot files along with your code changes.

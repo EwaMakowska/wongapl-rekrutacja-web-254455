@@ -15,4 +15,15 @@ test.describe('Homepage', () => {
     const typesLink = header.locator('a[href="/types/1"]');
     await expect(typesLink).toBeVisible();
   });
+
+  test('should match the homepage screenshot', async ({ page }) => {
+    // Navigate to the homepage
+    await page.goto('/');
+
+    // Wait for the main heading to be visible to ensure the page is loaded
+    await expect(page.getByRole('heading', { name: 'Welcome in the typeScript world 💊 !' })).toBeVisible();
+
+    // Take a screenshot and compare it with the golden one
+    await expect(page).toHaveScreenshot('homepage.png', { fullPage: true });
+  });
 }); 
