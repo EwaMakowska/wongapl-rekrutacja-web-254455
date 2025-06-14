@@ -45,6 +45,6 @@ This section tracks the development plan for the recruitment task. Tasks are mar
 - [x] Build paginated section for TypeScript knowledge entries
 - [x] Set up Playwright for E2E testing
 - [x] Configure CI/CD with GitHub Actions and Cloudflare Pages
-- [ ] Optimize for Web Vitals & Lighthouse
 - [ ] Deploy test report to separate Cloudflare Pages project
+- [ ] Optimize for Web Vitals & Lighthouse
 
