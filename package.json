@@ -4,11 +4,14 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "playwright test"
   },
   "dependencies": {
+    "@astrojs/check": "^0.8.1",
     "astro": "^5.9.2",
     "tinacms": "^2.7.8"
   },

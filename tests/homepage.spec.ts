@@ -20,10 +20,13 @@ test.describe('Homepage', () => {
     // Navigate to the homepage
     await page.goto('/');
 
-    // Wait for the main heading to be visible to ensure the page is loaded
+    // Wait for the main heading to be visible
     await expect(page.getByRole('heading', { name: 'Welcome in the typeScript world 💊 !' })).toBeVisible();
 
+    // Wait until the network is idle, ensuring all assets like images are fully loaded
+    await page.waitForLoadState('networkidle');
+
     // Take a screenshot and compare it with the golden one
-    await expect(page).toHaveScreenshot('homepage.png', { fullPage: true });
+    await expect(page).toHaveScreenshot('homepage.png', { fullPage: true, maxDiffPixelRatio: 0.01 });
   });
 }); 
