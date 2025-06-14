@@ -48,3 +48,5 @@ This section tracks the development plan for the recruitment task. Tasks are mar
 - [ ] Deploy test report to separate Cloudflare Pages project
 - [ ] Optimize for Web Vitals & Lighthouse
 
+Remember to commit the updated snapshot files along with your code changes.
+
