@@ -48,8 +48,15 @@ jobs:
         projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME_E2E }}
         directory: playwright-report
         gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Fail if report deployment failed
+      if: steps.publish_report.outputs.url == ''
+      run: |
+        echo "::error::Cloudflare Pages deployment failed to produce a URL."
+        exit 1
+
     - name: Publish test report comment
-      if: ${{ !cancelled() }}
+      if: always()
       uses: thollander/actions-comment-pull-request@v2
       with:
         message: '📊 **Playwright Test Report:** [View Report](${{ steps.publish_report.outputs.url }})'
