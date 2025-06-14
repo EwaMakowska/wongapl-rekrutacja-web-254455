@@ -45,9 +45,21 @@ jobs:
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME_E2E_TEST }}
+        directory: playwright-report
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        branch: 'main'
+
+    - name: Publish to Cloudflare Pages (Old Project - for testing)
+      if: always()
+      uses: cloudflare/pages-action@v1
+      with:
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME_E2E }}
         directory: playwright-report
         gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        branch: 'main'
 
     - name: Fail if report deployment failed
       if: steps.publish_report.outputs.url == ''
