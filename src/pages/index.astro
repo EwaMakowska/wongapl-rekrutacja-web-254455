@@ -23,7 +23,7 @@ if (welcome) {
 
     {welcome && Content && (
             <>
-                <h1 class="display-4 mb-4">{welcome.data.title}</h1>
+                <h1 class="display-4 mb-4" set:html={welcome.data.title}></h1>
                 <p class="lead">{welcome.data.subtitle}</p>
                 <hr class="my-4"/>
                 <div class="content-wrapper">
