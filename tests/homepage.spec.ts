@@ -8,7 +8,10 @@ test.describe('Homepage', () => {
     // 2. Find the main container and then find the h1 heading within it
     const mainContainer = page.locator('main');
     const mainHeading = mainContainer.locator('h1');
-    await expect(mainHeading).toHaveText('Welcome in the typeScript world 💊 !');
+    // Check that the heading contains the correct text
+    await expect(mainHeading).toContainText('Welcome in the typeScript world');
+    // Check that the icon is visible inside the heading
+    await expect(mainHeading.locator('img[alt="Pill icon"]')).toBeVisible();
 
     // 3. Find the main menu (inside <header>) and then find the link to the types page
     const header = page.locator('header');
@@ -20,8 +23,10 @@ test.describe('Homepage', () => {
     // Navigate to the homepage
     await page.goto('/');
 
-    // Wait for the main heading to be visible
-    await expect(page.getByRole('heading', { name: 'Welcome in the typeScript world 💊 !' })).toBeVisible();
+    // Wait for the main heading and the icon to be visible
+    const mainHeading = page.locator('h1');
+    await expect(mainHeading).toContainText('Welcome in the typeScript world');
+    await expect(mainHeading.locator('img[alt="Pill icon"]')).toBeVisible();
 
     // Wait until the network is idle, ensuring all assets like images are fully loaded
     await page.waitForLoadState('networkidle');
