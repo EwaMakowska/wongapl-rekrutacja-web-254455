@@ -24,7 +24,7 @@ test.describe('Homepage', () => {
     await page.goto('/');
 
     // Wait for the main heading and the icon to be visible
-    const mainHeading = page.locator('h1');
+    const mainHeading = page.locator('main').locator('h1');
     await expect(mainHeading).toContainText('Welcome in the typeScript world');
     await expect(mainHeading.locator('img[alt="Pill icon"]')).toBeVisible();
 
