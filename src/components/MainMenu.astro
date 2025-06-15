@@ -12,12 +12,20 @@ const internalLinks = (await getCollection('internal-links')).sort((a, b) => {
 });
 ---
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-end align-items-center">
-    <ul class="navbar-nav">
-        {internalLinks.map(({ data }) => (
-            <li class="nav-item">
-                <a class="nav-link" href={data.url}>{data.label}</a>
-            </li>
-        ))}
-    </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">TS Compendium</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                {internalLinks.map(({ data }) => (
+                <li class="nav-item">
+                    <a class="nav-link" href={data.url}>{data.label}</a>
+                </li>
+                ))}
+            </ul>
+        </div>
+    </div>
 </nav>
